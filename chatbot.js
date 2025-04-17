@@ -1,34 +1,53 @@
-// Define mock class mappings for each school + major combo
+// Based on official NOVA program catalogs
+
 const plans = {
   "GMU_CS": [
+    "CSC 200 - Introduction to Computer Science",
     "CSC 201 - Computer Science I",
     "MTH 263 - Calculus I",
-    "ENG 111 - College Composition I"
+    "ENG 111 - College Composition I",
+    "PHY 241 - University Physics I",
+    "SDV 100 - College Success Skills"
   ],
   "UVA_CS": [
+    "CSC 200 - Introduction to Computer Science",
     "CSC 201 - Computer Science I",
     "MTH 263 - Calculus I",
-    "PHY 241 - University Physics I"
+    "MTH 264 - Calculus II",
+    "PHY 241 - University Physics I",
+    "ENG 111 - College Composition I"
   ],
   "VT_CS": [
+    "CSC 200 - Introduction to Computer Science",
     "CSC 201 - Computer Science I",
+    "CSC 202 - Computer Science II",
     "MTH 263 - Calculus I",
-    "CHM 111 - General Chemistry I"
+    "MTH 264 - Calculus II",
+    "ENG 111 - College Composition I"
   ],
   "GMU_Nursing": [
     "BIO 141 - Human Anatomy and Physiology I",
+    "BIO 142 - Human Anatomy and Physiology II",
+    "BIO 150 - Microbiology",
+    "ENG 111 - College Composition I",
     "PSY 200 - Principles of Psychology",
-    "ENG 111 - College Composition I"
+    "SDV 101 - Orientation to Health Professions"
   ],
   "UVA_Nursing": [
     "BIO 141 - Human Anatomy and Physiology I",
+    "BIO 142 - Human Anatomy and Physiology II",
+    "BIO 150 - Microbiology",
+    "ENG 111 - College Composition I",
     "SOC 200 - Introduction to Sociology",
-    "CHM 111 - General Chemistry I"
+    "SDV 101 - Orientation to Health Professions"
   ],
   "VT_Nursing": [
     "BIO 141 - Human Anatomy and Physiology I",
+    "BIO 142 - Human Anatomy and Physiology II",
+    "BIO 150 - Microbiology",
+    "ENG 111 - College Composition I",
     "MTH 154 - Quantitative Reasoning",
-    "ENG 111 - College Composition I"
+    "SDV 101 - Orientation to Health Professions"
   ]
 };
 
@@ -44,10 +63,13 @@ function showPlan() {
   }
 
   if (plans[key]) {
-    const classList = plans[key].map(c => `<li>${c}</li>`).join("");
+    const classList = plans[key].map(course => `<li>${course}</li>`).join("");
     output.innerHTML = `
-      <h3>Recommended NOVA Courses for ${major} at ${getUniversityName(uni)}:</h3>
+      <h3>Recommended NOVA Courses for <em>${getMajorName(major)}</em> at <em>${getUniversityName(uni)}</em>:</h3>
       <ul>${classList}</ul>
+      <p style="margin-top: 10px;">
+        These recommendations are based on <a href="https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=${major === 'CS' ? '3735' : '3691'}" target="_blank">NOVA's official ${getMajorName(major)} curriculum</a>.
+      </p>
     `;
   } else {
     output.innerHTML = `<p style="color: red;">Sorry, no academic plan available for that combination (yet!).</p>`;
@@ -59,6 +81,14 @@ function getUniversityName(code) {
     GMU: "George Mason University",
     UVA: "University of Virginia",
     VT: "Virginia Tech"
+  };
+  return map[code] || code;
+}
+
+function getMajorName(code) {
+  const map = {
+    CS: "Computer Science",
+    Nursing: "Nursing"
   };
   return map[code] || code;
 }
