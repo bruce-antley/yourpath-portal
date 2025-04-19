@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>YourPath | Plan My Path</title>
+  <title>YourPath | Plan My Path</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
 
   <main>
     <h2>Custom Academic Plan Generator</h2>
-    <p>Select your target university and major to view the full NOVA curriculum:</p>
+    <p>Select your target university and major to load the **full** NOVA curriculum below:</p>
 
     <div class="form-row">
       <label for="university">University</label>
@@ -40,36 +40,44 @@
     </div>
 
     <button onclick="showFullCurriculum()">Load Full Curriculum</button>
+    <p class="error" id="error-msg"></p>
 
-    <div id="plan-output" class="curriculum-frame"></div>
+    <!-- PLACEHOLDERS: Paste the full <table>…</table> from NOVA into each of these divs -->
+    <div id="cs-curriculum" class="curriculum hidden">
+      <!-- 👉 Paste the **entire** <table>…</table> from 
+           https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3735 
+           here. -->
+    </div>
+
+    <div id="nursing-curriculum" class="curriculum hidden">
+      <!-- 👉 Paste the **entire** <table>…</table> from 
+           https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3691 
+           here. -->
+    </div>
   </main>
 
   <script>
     function showFullCurriculum() {
       const uni = document.getElementById("university").value;
       const major = document.getElementById("major").value;
-      const output = document.getElementById("plan-output");
+      const error = document.getElementById("error-msg");
+      error.textContent = "";
 
       if (!uni || !major) {
-        output.innerHTML = `<p class="error">Please select both a university and a major.</p>`;
+        error.textContent = "Please select both a university and a major.";
         return;
       }
 
-      // Determine which NOVA program page to embed
-      const url = major === 'CS'
-        ? 'https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3735'
-        : 'https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3691';
+      // Hide both curricula
+      document.querySelectorAll('.curriculum').forEach(div => {
+        div.classList.add('hidden');
+      });
 
-      // Embed via iframe
-      output.innerHTML = `
-        <iframe
-          src="${url}"
-          width="100%"
-          height="800"
-          frameborder="0"
-          title="Full ${major} Curriculum"
-        ></iframe>
-      `;
+      // Show the one the user wants
+      const targetDiv = major === 'CS'
+        ? document.getElementById('cs-curriculum')
+        : document.getElementById('nursing-curriculum');
+      targetDiv.classList.remove('hidden');
     }
   </script>
 </body>
