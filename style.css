@@ -1,39 +1,97 @@
 :root {
   --nova-green: #00703C;
+  --nova-gold:  #FFD200;
+  --text-dark: #333;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f7f9f8;
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #fff;
+  color: var(--text-dark);
 }
 
-h1 {
-  color: var(--nova-green);
+header {
+  background-color: var(--nova-green);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-h3 {
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+header nav a {
+  margin-left: 15px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav a.active,
+header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
   color: var(--nova-green);
+  margin-top: 0;
+}
+
+.form-row {
+  margin: 15px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
   background-color: var(--nova-green);
   color: #fff;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  opacity: 0.9;
+  background-color: #005f2d; /* slightly darker */
 }
 
 .error {
   color: #c00;
+  margin-top: 10px;
 }
 
-.note a {
-  color: var(--nova-green);
-  text-decoration: underline;
+.curriculum-frame {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
 }
