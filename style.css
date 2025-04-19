@@ -1,8 +1,39 @@
+:root {
+  --nova-green: #00703C;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #f0f8f5;
+  background-color: #f7f9f8;
 }
-nav a {
-  margin: 10px;
+
+h1 {
+  color: var(--nova-green);
+}
+
+h3 {
+  color: var(--nova-green);
+}
+
+button {
+  background-color: var(--nova-green);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: #c00;
+}
+
+.note a {
+  color: var(--nova-green);
+  text-decoration: underline;
 }
