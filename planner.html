@@ -22,8 +22,8 @@
   <label for="major">Major:</label>
   <select id="major">
     <option value="">--Choose--</option>
-    <option value="CS">Computer Science</option>
-    <option value="Nursing">Nursing</option>
+    <option value="CS">Computer Science (A.S.)</option>
+    <option value="Nursing">Nursing (A.A.S.)</option>
   </select>
 
   <br><br>
@@ -32,56 +32,56 @@
 
   <div id="plan-output" style="margin-top: 30px;"></div>
 
-  <!-- Embedded JS so it works instantly -->
   <script>
+    // Course plans drawn from NOVA catalog pages
     const plans = {
       "GMU_CS": [
-        "CSC 200 - Introduction to Computer Science",
-        "CSC 201 - Computer Science I",
-        "MTH 263 - Calculus I",
-        "ENG 111 - College Composition I",
-        "PHY 241 - University Physics I",
-        "SDV 100 - College Success Skills"
+        { code: "CSC 200", name: "Introduction to Computer Science" },
+        { code: "CSC 201", name: "Computer Science I" },
+        { code: "MTH 263", name: "Calculus I" },
+        { code: "ENG 111", name: "College Composition I" },
+        { code: "PHY 241", name: "University Physics I" },
+        { code: "SDV 100", name: "College Success Skills" }
       ],
       "UVA_CS": [
-        "CSC 200 - Introduction to Computer Science",
-        "CSC 201 - Computer Science I",
-        "MTH 263 - Calculus I",
-        "MTH 264 - Calculus II",
-        "PHY 241 - University Physics I",
-        "ENG 111 - College Composition I"
+        { code: "CSC 200", name: "Introduction to Computer Science" },
+        { code: "CSC 201", name: "Computer Science I" },
+        { code: "MTH 263", name: "Calculus I" },
+        { code: "MTH 264", name: "Calculus II" },
+        { code: "PHY 241", name: "University Physics I" },
+        { code: "ENG 111", name: "College Composition I" }
       ],
       "VT_CS": [
-        "CSC 200 - Introduction to Computer Science",
-        "CSC 201 - Computer Science I",
-        "CSC 202 - Computer Science II",
-        "MTH 263 - Calculus I",
-        "MTH 264 - Calculus II",
-        "ENG 111 - College Composition I"
+        { code: "CSC 200", name: "Introduction to Computer Science" },
+        { code: "CSC 201", name: "Computer Science I" },
+        { code: "CSC 202", name: "Computer Science II" },
+        { code: "MTH 263", name: "Calculus I" },
+        { code: "MTH 264", name: "Calculus II" },
+        { code: "ENG 111", name: "College Composition I" }
       ],
       "GMU_Nursing": [
-        "BIO 141 - Human Anatomy and Physiology I",
-        "BIO 142 - Human Anatomy and Physiology II",
-        "BIO 150 - Microbiology",
-        "ENG 111 - College Composition I",
-        "PSY 200 - Principles of Psychology",
-        "SDV 101 - Orientation to Health Professions"
+        { code: "BIO 141", name: "Human Anatomy & Physiology I" },
+        { code: "BIO 142", name: "Human Anatomy & Physiology II" },
+        { code: "BIO 150", name: "Microbiology" },
+        { code: "ENG 111", name: "College Composition I" },
+        { code: "PSY 200", name: "Principles of Psychology" },
+        { code: "SDV 101", name: "Orientation to Health Professions" }
       ],
       "UVA_Nursing": [
-        "BIO 141 - Human Anatomy and Physiology I",
-        "BIO 142 - Human Anatomy and Physiology II",
-        "BIO 150 - Microbiology",
-        "ENG 111 - College Composition I",
-        "SOC 200 - Introduction to Sociology",
-        "SDV 101 - Orientation to Health Professions"
+        { code: "BIO 141", name: "Human Anatomy & Physiology I" },
+        { code: "BIO 142", name: "Human Anatomy & Physiology II" },
+        { code: "BIO 150", name: "Microbiology" },
+        { code: "ENG 111", name: "College Composition I" },
+        { code: "SOC 200", name: "Introduction to Sociology" },
+        { code: "SDV 101", name: "Orientation to Health Professions" }
       ],
       "VT_Nursing": [
-        "BIO 141 - Human Anatomy and Physiology I",
-        "BIO 142 - Human Anatomy and Physiology II",
-        "BIO 150 - Microbiology",
-        "ENG 111 - College Composition I",
-        "MTH 154 - Quantitative Reasoning",
-        "SDV 101 - Orientation to Health Professions"
+        { code: "BIO 141", name: "Human Anatomy & Physiology I" },
+        { code: "BIO 142", name: "Human Anatomy & Physiology II" },
+        { code: "BIO 150", name: "Microbiology" },
+        { code: "ENG 111", name: "College Composition I" },
+        { code: "MTH 154", name: "Quantitative Reasoning" },
+        { code: "SDV 101", name: "Orientation to Health Professions" }
       ]
     };
 
@@ -92,39 +92,46 @@
       const output = document.getElementById("plan-output");
 
       if (!uni || !major) {
-        output.innerHTML = `<p style="color: red;">Please select both a university and a major.</p>`;
+        output.innerHTML = `<p class="error">Please select both a university and a major.</p>`;
         return;
       }
 
       if (plans[key]) {
-        const classList = plans[key].map(course => `<li>${course}</li>`).join("");
+        const listItems = plans[key]
+          .map(course =>
+            `<li><strong><a href="https://catalog.nvcc.edu/search/?P=${course.code.replace(/\\s+/g,'')}" target="_blank">${course.code}</a></strong>: ${course.name}</li>`
+          )
+          .join("");
+
+        const programLink = major === "CS"
+          ? "https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3735"
+          : "https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3691";
+
         output.innerHTML = `
           <h3>Recommended NOVA Courses for <em>${getMajorName(major)}</em> at <em>${getUniversityName(uni)}</em>:</h3>
-          <ul>${classList}</ul>
-          <p style="margin-top: 10px;">
-            These recommendations are based on <a href="https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=${major === 'CS' ? '3735' : '3691'}" target="_blank">NOVA's official ${getMajorName(major)} curriculum</a>.
+          <ul>${listItems}</ul>
+          <p class="note">
+            Full curriculum: <a href="${programLink}" target="_blank">${getMajorName(major)} Program Page</a>
           </p>
         `;
       } else {
-        output.innerHTML = `<p style="color: red;">Sorry, no academic plan available for that combination (yet!).</p>`;
+        output.innerHTML = `<p class="error">Sorry, no academic plan available for that combination (yet!).</p>`;
       }
     }
 
     function getUniversityName(code) {
-      const map = {
+      return {
         GMU: "George Mason University",
         UVA: "University of Virginia",
         VT: "Virginia Tech"
-      };
-      return map[code] || code;
+      }[code] || code;
     }
 
     function getMajorName(code) {
-      const map = {
-        CS: "Computer Science",
-        Nursing: "Nursing"
-      };
-      return map[code] || code;
+      return {
+        CS: "Computer Science (A.S.)",
+        Nursing: "Nursing (A.A.S.)"
+      }[code] || code;
     }
   </script>
 </body>
