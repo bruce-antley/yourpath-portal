@@ -35,78 +35,75 @@
       <select id="major">
         <option value="">-- Choose --</option>
         <option value="CS">Computer Science (A.S.)</option>
-        <option value="Business Management">Business Management (A.S.)</option>
+        <option value="BA">Business Administration (A.S.)</option>
       </select>
     </div>
 
     <button onclick="showFullCurriculum()">Load Full Curriculum</button>
     <p class="error" id="error-msg"></p>
 
- <!-- PLACEHOLDERS: Paste the full <table>…</table> from NOVA into each of these divs -->
-<div id="cs-curriculum" class="curriculum hidden">
-<div id="cs-curriculum" class="curriculum hidden">
-  <!-- 1st Semester -->
-  <div class="acalog-core">
-    <h3>1st Semester</h3>
-    <hr>
-    <ul>
-      <li class="acalog-course">CSC 221 – Introduction to Problem Solving and Programming (3 CR.)</li>
-      <li class="acalog-course">HIS – Elective (3 CR.)</li>
-      <li class="acalog-course">MTH 167 – PreCalculus with Trigonometry (5 CR.)</li>
-      <li class="acalog-course">ENG 111 – College Composition I (3 CR.)</li>
-      <li class="acalog-adhoc acalog-adhoc-before" style="list-style: none;"> </li>
-      <li class="acalog-course">SDV 100 – College Success Skills (1 CR.) <strong>OR</strong></li>
-      <li class="acalog-course">SDV 101 – Orientation to (a Specific Discipline) (1 CR.)</li>
-    </ul>
-  </div>
+    <!-- CS Curriculum Blocks -->
+    <div id="cs-curriculum" class="curriculum hidden">
+      <!-- 1st Semester -->
+      <div class="acalog-core">
+        <h3>1st Semester</h3><hr>
+        <ul>
+          <li class="acalog-course">CSC 221 – Introduction to Problem Solving and Programming (3 CR.)</li>
+          <li class="acalog-course">HIS – Elective (3 CR.)</li>
+          <li class="acalog-course">MTH 167 – PreCalculus with Trigonometry (5 CR.)</li>
+          <li class="acalog-course">ENG 111 – College Composition I (3 CR.)</li>
+          <li class="acalog-adhoc acalog-adhoc-before" style="list-style: none;"> </li>
+          <li class="acalog-course">SDV 100 – College Success Skills (1 CR.) <strong>OR</strong></li>
+          <li class="acalog-course">SDV 101 – Orientation to (a Specific Discipline) (1 CR.)</li>
+        </ul>
+      </div>
+      <!-- 2nd Semester -->
+      <div class="acalog-core">
+        <h3>2nd Semester</h3><hr>
+        <ul>
+          <li class="acalog-course">CSC 222 – Object Oriented Programming (4 CR.)</li>
+          <li class="acalog-course">ENG 112 – College Composition II (3 CR.)</li>
+          <li class="acalog-course">MTH 263 – Calculus I (4 CR.)</li>
+          <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
+        </ul>
+      </div>
+      <!-- 3rd Semester -->
+      <div class="acalog-core">
+        <h3>3rd Semester</h3><hr>
+        <ul>
+          <li class="acalog-course">CSC 208 – Introduction to Discrete Structures (3 CR.)</li>
+          <li class="acalog-course">MTH 288 – Discrete Mathematics (3 CR.)</li>
+          <li class="acalog-course">CSC 223 – Data Structures & Analysis of Algorithms (4 CR.)</li>
+          <li class="acalog-course">MTH 264 – Calculus II (4 CR.)</li>
+        </ul>
+      </div>
+      <!-- 4th Semester -->
+      <div class="acalog-core">
+        <h3>4th Semester</h3><hr>
+        <ul>
+          <li class="acalog-course">CSC 205 – Computer Organization (3 CR.)</li>
+          <li class="acalog-course">CSC 215 – Computer Systems (3 CR.)</li>
+          <li class="acalog-course">MTH 265 – Calculus III (4 CR.)</li>
+          <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
+          <li class="acalog-course">Physical or Life Science Elective w/Lab (4 CR.)</li>
+          <li class="acalog-course">Social/Behavioral Sciences Elective (3 CR.)</li>
+          <li class="acalog-course">Approved Elective (3–4 CR.)</li>
+        </ul>
+      </div>
+    </div>
 
-  <!-- 2nd Semester -->
-  <div class="acalog-core">
-    <h3>2nd Semester</h3>
-    <hr>
-    <ul>
-      <li class="acalog-course">CSC 222 – Object Oriented Programming (4 CR.)</li>
-      <li class="acalog-course">ENG 112 – College Composition II (3 CR.)</li>
-      <li class="acalog-course">MTH 263 – Calculus I (4 CR.)</li>
-      <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
-    </ul>
-  </div>
-
-  <!-- 3rd Semester -->
-  <div class="acalog-core">
-    <h3>3rd Semester</h3>
-    <hr>
-    <ul>
-      <li class="acalog-course">CSC 208 – Introduction to Discrete Structures (3 CR.)</li>
-      <li class="acalog-course">MTH 288 – Discrete Mathematics (3 CR.)</li>
-      <li class="acalog-course">CSC 223 – Data Structures & Analysis of Algorithms (4 CR.)</li>
-      <li class="acalog-course">MTH 264 – Calculus II (4 CR.)</li>
-    </ul>
-  </div>
-
-  <!-- 4th Semester -->
-  <div class="acalog-core">
-    <h3>4th Semester</h3>
-    <hr>
-    <ul>
-      <li class="acalog-course">CSC 205 – Computer Organization (3 CR.)</li>
-      <li class="acalog-course">CSC 215 – Computer Systems (3 CR.)</li>
-      <li class="acalog-course">MTH 265 – Calculus III (4 CR.)</li>
-      <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
-      <li class="acalog-course">Physical or Life Science Elective w/Lab (4 CR.)</li>
-      <li class="acalog-course">Social/Behavioral Sciences Elective (3 CR.)</li>
-      <li class="acalog-course">Approved Elective (3–4 CR.)</li>
-    </ul>
-  </div>
-</div>
-<div id="Business Management-curriculum" class="curriculum hidden">
-  <!-- Leave this one blank for now -->
-</div>
+    <!-- Business Administration Curriculum Placeholder -->
+    <div id="ba-curriculum" class="curriculum hidden">
+      <!-- 👉 Copy & paste the four <div class="custom_leftpad_20"><div class="acalog-core">…</div></div>
+           blocks for Business Administration from:
+           https://catalog.nvcc.edu/preview_program.php?catoid=15&poid=3723
+      -->
+    </div>
   </main>
 
   <script>
     function showFullCurriculum() {
-      const uni = document.getElementById("university").value;
+      const uni   = document.getElementById("university").value;
       const major = document.getElementById("major").value;
       const error = document.getElementById("error-msg");
       error.textContent = "";
@@ -116,16 +113,16 @@
         return;
       }
 
-      // Hide both curricula
-      document.querySelectorAll('.curriculum').forEach(div => {
-        div.classList.add('hidden');
-      });
+      // Hide all curricula
+      document.querySelectorAll('.curriculum').forEach(div => div.classList.add('hidden'));
 
-      // Show the one the user wants
-      const targetDiv = major === 'CS'
-        ? document.getElementById('cs-curriculum')
-        : document.getElementById('nursing-curriculum');
-      targetDiv.classList.remove('hidden');
+      // Show the appropriate one
+      const targetId = major === 'CS' ? 'cs-curriculum' : 'ba-curriculum';
+      document.getElementById(targetId).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
     }
   </script>
 </body>
