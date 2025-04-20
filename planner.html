@@ -42,9 +42,8 @@
     <button onclick="showFullCurriculum()">Load Full Curriculum</button>
     <p class="error" id="error-msg"></p>
 
-    <!-- CS Curriculum Blocks -->
+    <!-- CS Curriculum -->
     <div id="cs-curriculum" class="curriculum hidden">
-      <!-- 1st Semester -->
       <div class="acalog-core">
         <h3>1st Semester</h3><hr>
         <ul>
@@ -57,7 +56,6 @@
           <li class="acalog-course">SDV 101 – Orientation to (a Specific Discipline) (1 CR.)</li>
         </ul>
       </div>
-      <!-- 2nd Semester -->
       <div class="acalog-core">
         <h3>2nd Semester</h3><hr>
         <ul>
@@ -67,7 +65,6 @@
           <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
         </ul>
       </div>
-      <!-- 3rd Semester -->
       <div class="acalog-core">
         <h3>3rd Semester</h3><hr>
         <ul>
@@ -77,7 +74,6 @@
           <li class="acalog-course">MTH 264 – Calculus II (4 CR.)</li>
         </ul>
       </div>
-      <!-- 4th Semester -->
       <div class="acalog-core">
         <h3>4th Semester</h3><hr>
         <ul>
@@ -92,9 +88,8 @@
       </div>
     </div>
 
-    <!-- Business Administration (BA) Curriculum Blocks -->
+    <!-- BA Curriculum -->
     <div id="ba-curriculum" class="curriculum hidden">
-      <!-- 1st Semester -->
       <div class="acalog-core">
         <h3>1st Semester</h3><hr>
         <ul>
@@ -114,7 +109,6 @@
           </li>
         </ul>
       </div>
-      <!-- 2nd Semester -->
       <div class="acalog-core">
         <h3>2nd Semester</h3><hr>
         <ul>
@@ -127,7 +121,6 @@
           <li class="acalog-course">Physical or Life Science Elective w/Lab (4 CR.)</li>
         </ul>
       </div>
-      <!-- 3rd Semester -->
       <div class="acalog-core">
         <h3>3rd Semester</h3><hr>
         <ul>
@@ -140,7 +133,6 @@
           </li>
         </ul>
       </div>
-      <!-- 4th Semester -->
       <div class="acalog-core">
         <h3>4th Semester</h3><hr>
         <ul>
@@ -170,12 +162,16 @@
         return;
       }
 
-      // Hide all curricula
-      document.querySelectorAll('.curriculum').forEach(div => div.classList.add('hidden'));
+      // hide both
+      document.getElementById('cs-curriculum').classList.add('hidden');
+      document.getElementById('ba-curriculum').classList.add('hidden');
 
-      // Show the appropriate one
-      const targetId = major === 'CS' ? 'cs-curriculum' : 'ba-curriculum';
-      document.getElementById(targetId).classList.remove('hidden');
+      // show the one chosen
+      if (major === 'CS') {
+        document.getElementById('cs-curriculum').classList.remove('hidden');
+      } else if (major === 'BA') {
+        document.getElementById('ba-curriculum').classList.remove('hidden');
+      }
     }
   </script>
 </body>
