@@ -1,14 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>YourPath | Transfer Checklist</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>YourPath | Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tracker-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .progress-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .progress-logo {
+      width: 100px;
+      height: auto;
+    }
+
+    .progress-bar-wrapper {
+      flex: 1;
+      margin: 0 20px;
+      background-color: #e0e0e0;
+      border-radius: 25px;
+      height: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      background-color: #00703c;
+      height: 100%;
+      width: 0%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 0.4s ease-in-out;
+      border-radius: 25px;
+    }
+
+    .course-checklist {
+      background: #f9f9f9;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .course-checklist label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Transfer Enabler & Checklist</h1>
-  <p>Mark off the key steps in your transfer journey.</p>
-  <!-- Placeholder checklist -->
-  <script src="chatbot.js"></script>
+  <header>
+    <h1>YourPath Tracker</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="planner.html">Plan My Path</a>
+      <a href="tracker.html" class="active">Tracker</a>
+      <a href="transfer.html">Checklist</a>
+    </nav>
+  </header>
+
+  <main class="tracker-container">
+    <h2>Progress Toward Transfer (Business Administration → UVA)</h2>
+
+    <div class="progress-section">
+      <img src="data/nova-logo.png" alt="NOVA Logo" class="progress-logo" />
+
+      <div class="progress-bar-wrapper">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+
+      <img src="data/uva-logo.png" alt="UVA Logo" class="progress-logo" />
+    </div>
+
+    <div class="course-checklist" id="checklist">
+      <h3>Business Administration (A.S.) Curriculum</h3>
+      <label><input type="checkbox" /> CST — Elective (3 CR.)</label>
+      <label><input type="checkbox" /> ENG 111 – College Composition I (3 CR.)</label>
+      <label><input type="checkbox" /> HIS — Elective (3 CR.)</label>
+      <label><input type="checkbox" /> ITE 140 or BUS 240 (3 CR.)</label>
+      <label><input type="checkbox" /> MTH 161 or higher (3 CR.)</label>
+      <label><input type="checkbox" /> SDV 100 or SDV 101 (1 CR.)</label>
+      <label><input type="checkbox" /> BUS 100 – Introduction to Business (3 CR.)</label>
+      <label><input type="checkbox" /> ENG 112 – College Composition II (3 CR.)</label>
+      <label><input type="checkbox" /> MTH 261 or higher (3 CR.)</label>
+      <label><input type="checkbox" /> Humanities/Fine Arts Elective (3 CR.)</label>
+      <label><input type="checkbox" /> Physical/Life Science w/Lab (4 CR.)</label>
+      <label><input type="checkbox" /> ACC 211 – Principles of Accounting I (3 CR.)</label>
+      <label><input type="checkbox" /> BUS 224 – Business Statistics (3 CR.)</label>
+      <label><input type="checkbox" /> ECO 201 – Macroeconomics (3 CR.)</label>
+      <label><input type="checkbox" /> ACC 212 – Principles of Accounting II (3 CR.)</label>
+      <label><input type="checkbox" /> ECO 202 – Microeconomics (3 CR.)</label>
+      <label><input type="checkbox" /> BUS 270 or Elective (3 CR.)</label>
+      <label><input type="checkbox" /> BUS 280 or Elective (3 CR.)</label>
+      <label><input type="checkbox" /> Additional BUS Elective (3 CR.)</label>
+    </div>
+  </main>
+
+  <script>
+    const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+    const progressFill = document.getElementById('progress-fill');
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const percent = (checked / total) * 100;
+      progressFill.style.width = percent + '%';
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
+  </script>
 </body>
 </html>
