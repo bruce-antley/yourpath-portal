@@ -1,129 +1,168 @@
-:root {
-  --nova-green: #00703C;
-  --nova-gold:  #FFD200;
-  --text-dark:  #222;
-}
-
-* {
-  box-sizing: border-box;
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
-body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background: #fff;
-  color: var(--text-dark);
-  line-height: 1.6;
+h1, h2, h3 {
+  color: #00703c; /* NOVA green */
 }
 
+/* Header */
 header {
-  background-color: var(--nova-green);
-  padding: 10px 20px;
+  background-color: #f9b233; /* NOVA gold */
+  padding: 15px 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-header h1 {
-  color: #fff;
-  font-size: 1.5rem;
+header img {
+  height: 60px;
 }
 
-nav {
-  margin-left: auto;
-}
-
+/* Navigation */
 nav a {
-  color: #fff;
+  margin-left: 20px;
   text-decoration: none;
-  margin-left: 15px;
   font-weight: bold;
+  color: #222;
 }
 
-nav a.active,
-nav a:hover {
+nav a.active {
   text-decoration: underline;
 }
 
-main {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 0 10px;
-}
-
-h2 {
-  color: var(--nova-green);
-  margin-bottom: 10px;
-}
-
+/* Forms and Inputs */
 .form-row {
-  margin: 15px 0;
+  margin: 20px 0;
 }
 
 label {
   display: block;
+  margin-bottom: 8px;
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
-select {
-  width: 100%;
-  max-width: 300px;
+select, button {
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  font-size: 1rem;
 }
 
 button {
-  background-color: var(--nova-green);
-  color: #fff;
+  background-color: #00703c;
+  color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #005f2d;
+  background-color: #005c32;
 }
 
-.error {
-  color: #c00;
-  margin-top: 10px;
-}
-
+/* Curriculum display */
 .curriculum {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.hidden {
+.curriculum.hidden {
   display: none;
 }
 
-/* **Curriculum table styling** to mirror NOVA */
-.curriculum table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+.acalog-course {
+  margin-left: 20px;
 }
 
-.curriculum th,
-.curriculum td {
+/* Tracker Progress Bar */
+.progress-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.progress-logo {
+  width: 100px;
+  height: auto;
+}
+
+.progress-bar-wrapper {
+  flex: 1;
+  margin: 0 20px;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #00703c;
+  height: 100%;
+  width: 0%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+  border-radius: 25px;
+}
+
+/* Checklists */
+.course-checklist, .checklist-section {
+  background: #f9f9f9;
+  padding: 15px;
   border: 1px solid #ddd;
-  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 30px;
 }
 
-.curriculum th {
-  background-color: var(--nova-green);
-  color: #fff;
-  text-align: left;
+.course-checklist label, .checklist-section label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
 }
 
-.curriculum tr:nth-child(even) {
-  background-color: #f9f9f9;
+input[type="checkbox"] {
+  margin-right: 8px;
 }
 
-.curriculum tr:hover {
-  background-color: #f1f1f1;
+/* TESSA Icon */
+.tessa-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  background-color: #00703c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.tessa-button img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .progress-section {
+    flex-direction: column;
+  }
+
+  .progress-logo {
+    margin-bottom: 10px;
+  }
 }
