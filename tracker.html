@@ -2,84 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>YourPath | Tracker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f4f4f4;
-    }
-    header h1 {
-      color: #00703c;
-    }
-    .progress-bar-wrapper {
-      background: #eee;
-      border-radius: 25px;
-      height: 40px;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .progress-fill {
-      background: #00703c;
-      height: 100%;
-      width: 0%;
-      transition: width 0.3s ease;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .progress-labels {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      z-index: 1;
-      padding: 0 10px;
-      font-weight: bold;
-      height: 100%;
-      align-items: center;
-    }
-    .course-checklist label {
-      display: block;
-      margin-bottom: 10px;
-    }
-  </style>
+  <title>Debug Tracker</title>
 </head>
 <body>
 
-  <header>
-    <h1>YourPath Tracker</h1>
-  </header>
-
-  <div class="progress-bar-wrapper">
-    <div id="progress-fill" class="progress-fill"></div>
-    <div class="progress-labels">
-      <span>NOVA</span>
-      <span><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/UVA_Logo_Stacked_RGB_WhiteBox.png" alt="UVA" height="30"> Requirements</span>
-    </div>
-  </div>
-
-  <div class="course-checklist" id="checklist">
-    <h3>Sample Business Admin Courses</h3>
-    <label><input type="checkbox"> ENG 111 – College Composition I</label>
-    <label><input type="checkbox"> BUS 100 – Intro to Business</label>
-    <label><input type="checkbox"> ECO 201 – Macroeconomics</label>
-    <label><input type="checkbox"> ACC 211 – Accounting I</label>
-  </div>
-
-  <script>
-    const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
-    const progressFill = document.getElementById('progress-fill');
-
-    function updateProgress() {
-      const total = checkboxes.length;
-      const checked = [...checkboxes].filter(c => c.checked).length;
-      const percent = (checked / total) * 100;
-      progressFill.style.width = percent + '%';
-    }
-
-    checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
-  </script>
+  <h1>YourPath Tracker</h1>
+  <p>If you're seeing this, the page is rendering!</p>
 
 </body>
 </html>
