@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YourPath | Talk to TESSA</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5fdf9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 20px;
+      background-color: #00703c;
+      color: white;
+      text-align: center;
+    }
+
+    .chat-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .chat-window {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .chat-bubble {
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+
+    .user {
+      background-color: #e0f0ff;
+      align-self: flex-end;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    .tessa {
+      background-color: #d9fdd3;
+      align-self: flex-start;
+      text-align: left;
+      margin-right: auto;
+    }
+
+    .chat-input {
+      display: flex;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+    }
+
+    .chat-input button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #00703c;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #005c30;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .subtext {
+      text-align: center;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>YourPath: TESSA</h1>
+  </header>
+
+  <main class="chat-container">
+    <h2>Talk to TESSA</h2>
+    <p class="subtext">Your Transfer Educational System Support Assistant</p>
+
+    <div class="chat-window" id="chat-window">
+      <!-- Chat bubbles go here -->
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your question..." />
+      <button onclick="handleMessage()">Send</button>
+    </div>
+  </main>
+
+  <script>
+    const chatWindow = document.getElementById('chat-window');
+    const inputBox = document.getElementById('user-input');
+
+    function handleMessage() {
+      const msg = inputBox.value.trim();
+      if (!msg) return;
+
+      addBubble(msg, 'user');
+      inputBox.value = '';
+
+      // Simulated keyword detection
+      const lower = msg.toLowerCase();
+      let response = "I'm here to help! Can you be more specific?";
+
+      if (lower.includes('transcript')) {
+        response = `You can request your NOVA transcript here: <a href="https://www.nvcc.edu/transcripts/" target="_blank">nvcc.edu/transcripts</a>`;
+      } else if (lower.includes('deadline')) {
+        response = "Most transfer application deadlines are in February or March, but check with your target school!";
+      } else if (lower.includes('advisor')) {
+        response = "You can connect with a NOVA academic advisor through your myNOVA portal or visit your campus advising center.";
+      } else if (lower.includes('common app')) {
+        response = `You can access the Common App here: <a href="https://app.commonapp.org/" target="_blank">commonapp.org</a>`;
+      } else if (lower.includes('financial') || lower.includes('faFSA')) {
+        response = `Start your FAFSA here: <a href="https://studentaid.gov/" target="_blank">studentaid.gov</a>`;
+      } else if (lower.includes('hello') || lower.includes('hi')) {
+        response = "Hi there! I'm TESSA. Ask me anything about transferring from NOVA.";
+      }
+
+      setTimeout(() => {
+        addBubble(response, 'tessa');
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }, 500);
+    }
+
+    function addBubble(text, sender) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('chat-bubble', sender);
+      bubble.innerHTML = text;
+      chatWindow.appendChild(bubble);
+    }
+
+    inputBox.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        handleMessage();
+      }
+    });
+  </script>
+</body>
+</html>
