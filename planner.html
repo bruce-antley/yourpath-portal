@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>YourPath | Plan My Path</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ensure hidden sections are truly hidden */
+    .curriculum { display: none; }
+  </style>
 </head>
 <body>
   <header>
@@ -39,11 +43,11 @@
       </select>
     </div>
 
-    <button onclick="showFullCurriculum()">Load Full Curriculum</button>
-    <p class="error" id="error-msg"></p>
+    <button id="load-btn">Load Full Curriculum</button>
+    <p class="error" id="error-msg" style="color: #c00;"></p>
 
     <!-- CS Curriculum -->
-    <div id="cs-curriculum" class="curriculum hidden">
+    <div id="cs-curriculum" class="curriculum">
       <div class="acalog-core">
         <h3>1st Semester</h3><hr>
         <ul>
@@ -51,9 +55,7 @@
           <li class="acalog-course">HIS – Elective (3 CR.)</li>
           <li class="acalog-course">MTH 167 – PreCalculus with Trigonometry (5 CR.)</li>
           <li class="acalog-course">ENG 111 – College Composition I (3 CR.)</li>
-          <li class="acalog-adhoc acalog-adhoc-before" style="list-style: none;"> </li>
-          <li class="acalog-course">SDV 100 – College Success Skills (1 CR.) <strong>OR</strong></li>
-          <li class="acalog-course">SDV 101 – Orientation to (a Specific Discipline) (1 CR.)</li>
+          <li class="acalog-course">SDV 100 – College Success Skills (1 CR.) <strong>OR</strong> SDV 101 – Orientation (1 CR.)</li>
         </ul>
       </div>
       <div class="acalog-core">
@@ -89,24 +91,16 @@
     </div>
 
     <!-- BA Curriculum -->
-    <div id="ba-curriculum" class="curriculum hidden">
+    <div id="ba-curriculum" class="curriculum">
       <div class="acalog-core">
         <h3>1st Semester</h3><hr>
         <ul>
           <li class="acalog-course">CST — Elective (3 CR.)</li>
           <li class="acalog-course">ENG 111 – College Composition I (3 CR.)</li>
           <li class="acalog-course">HIS — Elective (3 CR.)</li>
-          <li class="acalog-course">
-            ITE 140 – Spreadsheeting for Business (3 CR.) <strong>OR</strong>
-            BUS 240 – Introduction to Business Law (3 CR.)
-          </li>
-          <li class="acalog-course">
-            MTH 161 – PreCalculus I (3 CR.) <strong>OR</strong> higher‑level math
-          </li>
-          <li class="acalog-course">
-            SDV 100 – College Success Skills (1 CR.) <strong>OR</strong>
-            SDV 101 – Orientation to (a Specific Discipline) (1 CR.)
-          </li>
+          <li class="acalog-course">ITE 140 – Spreadsheeting for Business (3 CR.) <strong>OR</strong> BUS 240 – Intro to Business Law (3 CR.)</li>
+          <li class="acalog-course">MTH 161 – PreCalculus I (3 CR.) <strong>OR</strong> higher‑level math</li>
+          <li class="acalog-course">SDV 100 – College Success Skills (1 CR.) <strong>OR</strong> SDV 101 – Orientation to Discipline (1 CR.)</li>
         </ul>
       </div>
       <div class="acalog-core">
@@ -114,11 +108,9 @@
         <ul>
           <li class="acalog-course">BUS 100 – Introduction to Business (3 CR.)</li>
           <li class="acalog-course">ENG 112 – College Composition II (3 CR.)</li>
-          <li class="acalog-course">
-            MTH 261 – Applied Calculus I (3 CR.) <strong>OR</strong> higher‑level math
-          </li>
+          <li class="acalog-course">MTH 261 – Applied Calculus I (3 CR.) <strong>OR</strong> higher‑level math</li>
           <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
-          <li class="acalog-course">Physical or Life Science Elective w/Lab (4 CR.)</li>
+          <li class="acalog-course">Physical/Life Science Elective w/Lab (4 CR.)</li>
         </ul>
       </div>
       <div class="acalog-core">
@@ -128,9 +120,7 @@
           <li class="acalog-course">BUS 224 – Business Statistics (3 CR.)</li>
           <li class="acalog-course">ECO 201 – Principles of Macroeconomics (3 CR.)</li>
           <li class="acalog-course">Humanities/Fine Arts Elective (3 CR.)</li>
-          <li class="acalog-course">
-            Physical or Life Science Elective w/Lab (4 CR.) <strong>OR</strong> BUS Elective (3 CR.)
-          </li>
+          <li class="acalog-course">Physical/Life Science Elective w/Lab (4 CR.) <strong>OR</strong> BUS Elective (3 CR.)</li>
         </ul>
       </div>
       <div class="acalog-core">
@@ -138,12 +128,8 @@
         <ul>
           <li class="acalog-course">ACC 212 – Principles of Accounting II (3 CR.)</li>
           <li class="acalog-course">ECO 202 – Principles of Microeconomics (3 CR.)</li>
-          <li class="acalog-course">
-            BUS 270 – Interpersonal Dynamics (3 CR.) <strong>OR</strong> BUS Elective (3 CR.)
-          </li>
-          <li class="acalog-course">
-            BUS 280 – Introduction to International Business (3 CR.) <strong>OR</strong> BUS Elective (3 CR.)
-          </li>
+          <li class="acalog-course">BUS 270 – Interpersonal Dynamics (3 CR.) <strong>OR</strong> BUS Elective (3 CR.)</li>
+          <li class="acalog-course">BUS 280 – Intro to International Business (3 CR.) <strong>OR</strong> BUS Elective (3 CR.)</li>
           <li class="acalog-course">BUS Elective (3 CR.)</li>
         </ul>
       </div>
@@ -151,26 +137,28 @@
   </main>
 
   <script>
+    document.getElementById('load-btn').addEventListener('click', showFullCurriculum);
+
     function showFullCurriculum() {
-      const uni   = document.getElementById("university").value;
-      const major = document.getElementById("major").value;
-      const error = document.getElementById("error-msg");
-      error.textContent = "";
+      const uni   = document.getElementById('university').value;
+      const major = document.getElementById('major').value;
+      const error = document.getElementById('error-msg');
+      error.textContent = '';
 
       if (!uni || !major) {
-        error.textContent = "Please select both a university and a major.";
+        error.textContent = 'Please select both a university and a major.';
         return;
       }
 
       // hide both
-      document.getElementById('cs-curriculum').classList.add('hidden');
-      document.getElementById('ba-curriculum').classList.add('hidden');
+      document.getElementById('cs-curriculum').style.display = 'none';
+      document.getElementById('ba-curriculum').style.display = 'none';
 
-      // show the one chosen
+      // show chosen
       if (major === 'CS') {
-        document.getElementById('cs-curriculum').classList.remove('hidden');
+        document.getElementById('cs-curriculum').style.display = 'block';
       } else if (major === 'BA') {
-        document.getElementById('ba-curriculum').classList.remove('hidden');
+        document.getElementById('ba-curriculum').style.display = 'block';
       }
     }
   </script>
