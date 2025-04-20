@@ -5,9 +5,6 @@
   <title>YourPath | Transfer Checklist</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
     .transfer-container {
       max-width: 900px;
       margin: auto;
@@ -48,12 +45,17 @@
     }
 
     .checklist-section {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .checklist-section h3 {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
+      margin-bottom: 5px;
+    }
+
+    .checklist-section p {
+      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 15px;
     }
 
     .checklist label {
@@ -61,11 +63,19 @@
       margin: 8px 0;
     }
 
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: 1px solid #ccc;
-      margin-top: 15px;
+    .button-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 16px;
+      background-color: #00703c;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button-link:hover {
+      background-color: #005c30;
     }
   </style>
 </head>
@@ -81,7 +91,7 @@
   </header>
 
   <main class="transfer-container">
-    <h2>Checklist for Transferring from NOVA to UVA (Business Admin)</h2>
+    <h2>Transfer Steps: NOVA to UVA (Business Administration)</h2>
 
     <div class="progress-section">
       <img src="data/nova-logo.png" alt="NOVA Logo" class="progress-logo" />
@@ -91,30 +101,59 @@
       <img src="data/uva-logo.png" alt="UVA Logo" class="progress-logo" />
     </div>
 
-    <div class="checklist checklist-section" id="checklist">
-      <h3>Academic Preparation</h3>
-      <label><input type="checkbox"> Confirm target major and program at UVA</label>
-      <label><input type="checkbox"> Complete all NOVA required courses for A.S. in Business Admin</label>
-      <label><input type="checkbox"> Meet with NOVA academic advisor</label>
+    <div class="checklist" id="checklist">
 
-      <h3>Application Process</h3>
-      <label><input type="checkbox"> Visit <a href="https://www.transfervirginia.org/" target="_blank">Transfer Virginia</a></label>
-      <label><input type="checkbox"> Start Common App or UVA-specific application</label>
-      <label><input type="checkbox"> Write personal statement or essay</label>
-      <label><input type="checkbox"> Request letters of recommendation</label>
+      <!-- Phase 1 -->
+      <div class="checklist-section">
+        <h3>🎯 Phase 1: Explore & Decide</h3>
+        <p>Start here! Choose your transfer school and confirm your major so we can build a plan that fits you.</p>
+        <label><input type="checkbox"> Confirm your intended major (Business Administration)</label>
+        <label><input type="checkbox"> Confirm your transfer school (UVA)</label>
+        <label><input type="checkbox"> Meet with a NOVA academic advisor</label>
+        <a href="https://www.transfervirginia.org/" class="button-link" target="_blank">Explore Transfer Options</a>
+      </div>
 
-      <h3>Transcripts</h3>
-      <label><input type="checkbox"> Request official transcript from NOVA</label>
-      <iframe src="https://www.nvcc.edu/transcripts/" title="NOVA Transcript Request"></iframe>
+      <!-- Phase 2 -->
+      <div class="checklist-section">
+        <h3>🧱 Phase 2: Build Your Academic Plan</h3>
+        <p>Make sure you're on track to meet your academic requirements at NOVA and your target school.</p>
+        <label><input type="checkbox"> Review A.S. Business Administration curriculum</label>
+        <label><input type="checkbox"> Check articulation agreement with UVA</label>
+        <label><input type="checkbox"> Plan any catch-up courses (e.g., summer)</label>
+        <a href="planner.html" class="button-link">Open Academic Planner</a>
+      </div>
 
-      <h3>Financial Aid & Scholarships</h3>
-      <label><input type="checkbox"> Submit FAFSA (include UVA’s school code)</label>
-      <label><input type="checkbox"> Explore scholarships at UVA</label>
+      <!-- Phase 3 -->
+      <div class="checklist-section">
+        <h3>✍️ Phase 3: Application Prep</h3>
+        <p>Get ready to apply! Knock out these items early so you’re not rushing.</p>
+        <label><input type="checkbox"> Start Common App or UVA-specific application</label>
+        <a href="https://app.commonapp.org/login" target="_blank" class="button-link">Launch Common App</a>
+        <label><input type="checkbox"> Draft and polish your personal statement</label>
+        <label><input type="checkbox"> Request letters of recommendation</label>
+        <label><input type="checkbox"> Prepare or update your resume</label>
+      </div>
 
-      <h3>After Acceptance</h3>
-      <label><input type="checkbox"> Accept admission offer from UVA</label>
-      <label><input type="checkbox"> Register for orientation</label>
-      <label><input type="checkbox"> Schedule advising appointment with UVA</label>
+      <!-- Phase 4 -->
+      <div class="checklist-section">
+        <h3>📬 Phase 4: Submit & Send Documents</h3>
+        <p>You're almost there! Don't forget these final steps.</p>
+        <label><input type="checkbox"> Submit application</label>
+        <label><input type="checkbox"> Request official transcript from NOVA</label>
+        <a href="https://www.nvcc.edu/transcripts/" class="button-link" target="_blank">Request Transcript</a>
+        <label><input type="checkbox"> Submit FAFSA and include UVA’s code</label>
+        <a href="https://studentaid.gov/h/apply-for-aid/fafsa" class="button-link" target="_blank">Submit FAFSA</a>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="checklist-section">
+        <h3>🎉 Phase 5: After You’re Accepted</h3>
+        <p>Congrats! Just a few more steps before you're officially a student at UVA.</p>
+        <label><input type="checkbox"> Accept your admission offer</label>
+        <label><input type="checkbox"> Register for orientation</label>
+        <label><input type="checkbox"> Connect with a UVA academic advisor</label>
+        <label><input type="checkbox"> Celebrate! 🎓</label>
+      </div>
     </div>
   </main>
 
