@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>YourPath | Tracker</title>
+  <title>YourPath | Transfer Checklist</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .tracker-container {
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .transfer-container {
       max-width: 900px;
       margin: auto;
       padding: 20px;
@@ -40,73 +43,78 @@
       position: absolute;
       top: 0;
       left: 0;
-      transition: width 0.4s ease-in-out;
+      transition: width 0.3s ease-in-out;
       border-radius: 25px;
     }
 
-    .course-checklist {
-      background: #f9f9f9;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
+    .checklist-section {
+      margin-bottom: 30px;
     }
 
-    .course-checklist label {
+    .checklist-section h3 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .checklist label {
       display: block;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
+      margin: 8px 0;
     }
 
-    input[type="checkbox"] {
-      margin-right: 8px;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>YourPath Tracker</h1>
+    <h1>YourPath Transfer Checklist</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="planner.html">Plan My Path</a>
-      <a href="tracker.html" class="active">Tracker</a>
-      <a href="transfer.html">Checklist</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="transfer.html" class="active">Checklist</a>
     </nav>
   </header>
 
-  <main class="tracker-container">
-    <h2>Progress Toward Transfer (Business Administration → UVA)</h2>
+  <main class="transfer-container">
+    <h2>Checklist for Transferring from NOVA to UVA (Business Admin)</h2>
 
     <div class="progress-section">
       <img src="data/nova-logo.png" alt="NOVA Logo" class="progress-logo" />
-
       <div class="progress-bar-wrapper">
         <div id="progress-fill" class="progress-fill"></div>
       </div>
-
       <img src="data/uva-logo.png" alt="UVA Logo" class="progress-logo" />
     </div>
 
-    <div class="course-checklist" id="checklist">
-      <h3>Business Administration (A.S.) Curriculum</h3>
-      <label><input type="checkbox" /> CST — Elective (3 CR.)</label>
-      <label><input type="checkbox" /> ENG 111 – College Composition I (3 CR.)</label>
-      <label><input type="checkbox" /> HIS — Elective (3 CR.)</label>
-      <label><input type="checkbox" /> ITE 140 or BUS 240 (3 CR.)</label>
-      <label><input type="checkbox" /> MTH 161 or higher (3 CR.)</label>
-      <label><input type="checkbox" /> SDV 100 or SDV 101 (1 CR.)</label>
-      <label><input type="checkbox" /> BUS 100 – Introduction to Business (3 CR.)</label>
-      <label><input type="checkbox" /> ENG 112 – College Composition II (3 CR.)</label>
-      <label><input type="checkbox" /> MTH 261 or higher (3 CR.)</label>
-      <label><input type="checkbox" /> Humanities/Fine Arts Elective (3 CR.)</label>
-      <label><input type="checkbox" /> Physical/Life Science w/Lab (4 CR.)</label>
-      <label><input type="checkbox" /> ACC 211 – Principles of Accounting I (3 CR.)</label>
-      <label><input type="checkbox" /> BUS 224 – Business Statistics (3 CR.)</label>
-      <label><input type="checkbox" /> ECO 201 – Macroeconomics (3 CR.)</label>
-      <label><input type="checkbox" /> ACC 212 – Principles of Accounting II (3 CR.)</label>
-      <label><input type="checkbox" /> ECO 202 – Microeconomics (3 CR.)</label>
-      <label><input type="checkbox" /> BUS 270 or Elective (3 CR.)</label>
-      <label><input type="checkbox" /> BUS 280 or Elective (3 CR.)</label>
-      <label><input type="checkbox" /> Additional BUS Elective (3 CR.)</label>
+    <div class="checklist checklist-section" id="checklist">
+      <h3>Academic Preparation</h3>
+      <label><input type="checkbox"> Confirm target major and program at UVA</label>
+      <label><input type="checkbox"> Complete all NOVA required courses for A.S. in Business Admin</label>
+      <label><input type="checkbox"> Meet with NOVA academic advisor</label>
+
+      <h3>Application Process</h3>
+      <label><input type="checkbox"> Visit <a href="https://www.transfervirginia.org/" target="_blank">Transfer Virginia</a></label>
+      <label><input type="checkbox"> Start Common App or UVA-specific application</label>
+      <label><input type="checkbox"> Write personal statement or essay</label>
+      <label><input type="checkbox"> Request letters of recommendation</label>
+
+      <h3>Transcripts</h3>
+      <label><input type="checkbox"> Request official transcript from NOVA</label>
+      <iframe src="https://www.nvcc.edu/transcripts/" title="NOVA Transcript Request"></iframe>
+
+      <h3>Financial Aid & Scholarships</h3>
+      <label><input type="checkbox"> Submit FAFSA (include UVA’s school code)</label>
+      <label><input type="checkbox"> Explore scholarships at UVA</label>
+
+      <h3>After Acceptance</h3>
+      <label><input type="checkbox"> Accept admission offer from UVA</label>
+      <label><input type="checkbox"> Register for orientation</label>
+      <label><input type="checkbox"> Schedule advising appointment with UVA</label>
     </div>
   </main>
 
